@@ -1,0 +1,30 @@
+{
+  "name": "react-dgdb",
+  "version": "1.0.0",
+  "description": "Divine Gate DB",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --config ./webpack.config.js --mode development"
+  },
+  "keywords": [
+    "dgdb"
+  ],
+  "author": "kennyfong19931",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^9.0.0",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "eslint": "^5.4.0",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-react": "^7.11.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.6"
+  }
+}
