@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import theme from '../theme';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Header from './Header';
 import * as Pages from './pages';
@@ -10,6 +11,7 @@ import * as Pages from './pages';
 const App = () => (
     <MuiThemeProvider theme={theme}>
         <Header />
+        <CssBaseline />
         <main>
             <Switch>
                 <Route exact strict path='/' component={Pages.Home} />
@@ -19,11 +21,11 @@ const App = () => (
                 <Route exact strict path="/quest/:id(\d+)" component={Pages.Quest} />
                 <Route exact strict path="/questlist" component={Pages.QuestList} />
                 <Route exact strict path="/rank" component={Pages.Rank} />
-                <Route exact strict path="/skill/:type(ls|ns|ps|lns|lps)" component={Pages.Skill} />
+                <Route exact strict path="/skill/:type(l|n|p|ln|lp)" component={Pages.Skill} />
                 <Route exact strict path="/story" component={Pages.Story} />
                 <Route exact strict path="/unit/:id(\d+)" component={Pages.Unit} />
                 <Route exact strict path="/unitlist" component={Pages.UnitList} />
-                <Route exact strict path="/voteResult" component={Pages.voteResult} />
+                <Route exact strict path="/voteResult" component={Pages.VoteResult} />
                 <Route component={Pages.Error} />
             </Switch>
         </main>

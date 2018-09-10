@@ -1,3 +1,47 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+
 main{
     margin-top: 80px;
+}
+.container{
+    margin:0 auto;
+    max-width:1280px;
+    width:90%
+}
+.inline{
+    display: flex;
+}
+.box{
+    width: 100%;
+    padding: 20px;
+    margin: 0.5rem 0 1rem 0;
+}
+@media only screen and (min-width: 600px){
+    .container{
+        width:85%
+    }
+    /* Vote Result */
+    .multi-column>ul>a{
+        padding: 0 0 5px 0;
+    }
+    /* End Vote Result */
+}
+@media only screen and (min-width: 960px){
+    /* Vote Result */
+    .multi-column{
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 3;
+    }
+    .multi-column>ul>a{
+        -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
+        page-break-inside: avoid; /* Firefox */
+        break-inside: avoid; /* IE 10+ */
+    }
+    /* End Vote Result */
+}
+@media only screen and (min-width: 1280px){
+    .container{
+        width:70%
+    }
 }
