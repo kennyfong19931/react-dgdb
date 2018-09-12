@@ -20,13 +20,12 @@ const App = () => (
                 <Route exact strict path="/mark/:type(rare|collabo)" component={Pages.Mark} />
                 <Route exact strict path="/quest/:id(\d+)" component={Pages.Quest} />
                 <Route exact strict path="/questlist" component={Pages.QuestList} />
-                <Route exact strict path="/rank" component={Pages.Rank} />
                 <Route exact strict path="/skill/:type(l|n|p|ln|lp)" component={Pages.Skill} />
                 <Route exact strict path="/story" component={Pages.Story} />
                 <Route exact strict path="/unit/:id(\d+)" component={Pages.Unit} />
                 <Route exact strict path="/unitlist" component={Pages.UnitList} />
                 <Route exact strict path="/voteResult" component={Pages.VoteResult} />
-                <Route component={Pages.Error} />
+                <Route component={Pages.ErrorPage} />
             </Switch>
         </main>
     </MuiThemeProvider>

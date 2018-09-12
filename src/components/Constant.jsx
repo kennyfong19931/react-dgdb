@@ -1,5 +1,13 @@
 export class URL {
     static HOST = 'http://localhost/dgdb/';
+    static AREA = URL.HOST + 'api/area/';
+    static QUEST = URL.HOST + 'api/quest/';
+    static QUESTLIST = URL.HOST + 'api/questlist';
+    static RANK = URL.HOST + 'api/rank';
+    static SKILL = URL.HOST + 'api/skill/';
+    static STORY = URL.HOST + 'api/story';
+    static UNIT = URL.HOST + 'api/unit/';
+    static UNITLIST = URL.HOST + 'api/unitlist';
     static VOTE_RESULT = URL.HOST + 'api/voteresult/';
 }
 export class STATUS {

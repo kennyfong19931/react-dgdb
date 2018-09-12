@@ -3,19 +3,82 @@
 main{
     margin-top: 80px;
 }
+a{
+    text-decoration: none;
+}
 .container{
     margin:0 auto;
     max-width:1280px;
     width:90%
 }
 .inline{
-    display: flex;
+    display: inline-flex;
+    flex-wrap: wrap;
 }
 .box{
     width: 100%;
     padding: 20px;
     margin: 0.5rem 0 1rem 0;
 }
+.breadcrumb{
+    display: flex;
+    width: 100%;
+    padding: 20px;
+}
+.full-width{
+    width: 100%;
+}
+.map{
+    position: relative;
+    top: -5px;
+}
+.map .content{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+}
+.map .img{
+    height: 128px;
+    width: 128px;
+}
+
+/* Skeleton Screen */
+.skeleton-sm{
+    width: 100px;
+}
+.skeleton-md{
+    width: 200px;
+    max-width: 100%;
+}
+.skeleton-lg{
+    width: 500px;
+    max-width: 100%;
+}
+
+.skeleton-background {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: linear-gradient(to right, #616161 8%, #424242 18%, #616161 33%);
+    background-size: 800px 104px;
+    height: 1.5em;
+    position: relative;
+}
+
+@keyframes placeHolderShimmer{
+    0%{
+        background-position: -468px 0
+    }
+    100%{
+        background-position: 468px 0
+    }
+}
+
+/* End Skeleton Screen */
 @media only screen and (min-width: 600px){
     .container{
         width:85%

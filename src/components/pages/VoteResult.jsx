@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import * as Constant from '../Constant';
 import theme from '../../theme';
 import { Link } from 'react-router-dom';
+import { ErrorPage } from './ErrorPage';
+import { LoadingPage } from './LoadingPage';
 
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
@@ -21,7 +23,7 @@ import SwipeableViews from 'react-swipeable-views';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import { TrendingUp, TrendingDown, TrendingFlat, NewReleases } from '@material-ui/icons';
+import { KeyboardArrowRight, TrendingUp, TrendingDown, TrendingFlat, NewReleases } from '@material-ui/icons';
 
 const styles = {
     squareAvatar: {
@@ -127,6 +129,7 @@ export class VoteResult extends React.Component {
     handleChangeIndex13rd = index => {
         this.setState({ tab13rd: index });
     };
+
     componentDidMount() {
         Promise.all([
             fetch(Constant.URL.VOTE_RESULT + "1"),
@@ -182,15 +185,15 @@ export class VoteResult extends React.Component {
     }
     render() {
         return <Grid container spacing={24}>
-            <Grid item xs={12}>
-                <Typography variant="display2" gutterBottom>
-                    人氣投票結果
-                </Typography>
-            </Grid>
+            <Paper style={theme.palette.primary} className="breadcrumb">
+                <Typography style={theme.palette.breadcrumb} component={Link} to="/">Home</Typography>
+                <KeyboardArrowRight style={theme.palette.breadcrumb} />
+                <Typography style={theme.palette.breadcrumbLast} component="div">人氣投票結果</Typography>
+            </Paper>
             {(() => {
                 switch (this.state.status) {
-                    case Constant.STATUS.LOADING: return <Grid item xs><Typography>Loading</Typography></Grid>;
-                    case Constant.STATUS.ERROR: return <Grid item xs><Typography>Error</Typography></Grid>;
+                    case Constant.STATUS.LOADING: return <Grid item xs><LoadingPage /></Grid>;
+                    case Constant.STATUS.ERROR: return <Grid item xs><ErrorPage /></Grid>;
                     case Constant.STATUS.SUCCESS:
                         return <Grid container spacing={24}>
                             <Grid item xs={12}>
