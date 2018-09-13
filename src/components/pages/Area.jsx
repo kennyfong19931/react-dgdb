@@ -4,6 +4,7 @@ import * as Constant from '../Constant';
 import { Link } from 'react-router-dom';
 import theme from '../../theme';
 import { ErrorPage } from './ErrorPage';
+import { parseColorTag } from '../Util';
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -19,15 +20,11 @@ import { KeyboardArrowRight } from '@material-ui/icons';
 
 const DrawQuest = (list) => (
     list.map((map) => {
-        let questName = encodeURI(map.quest_name)
-        questName = map.quest_name.replace(/\[([A-Fa-f0-9]{6}|w{3})\]/g, '<span style="color:#$1">');
-        questName = questName.replace(/\[\-\]/g, '</span>'); // eslint-disable-line no-useless-escape
-
         return <Grid item xs={12} md={4} key={map.quest_id}>
             <Card>
                 <CardActionArea component={Link} to={"/quest/" + map.quest_id}>
                     <CardContent>
-                        <Typography gutterBottom variant="headline" dangerouslySetInnerHTML={{ __html: questName }} />
+                        <Typography gutterBottom variant="headline" dangerouslySetInnerHTML={{ __html: parseColorTag(map.quest_name, false) }} />
                         <Typography>入場要求: 體力: {map.quest_stamina} 券: {map.quest_ticket} 鑰匙:{map.quest_key}</Typography>
                         <Typography>關卡層數: {map.floor_count}</Typography>
                     </CardContent>
@@ -83,7 +80,7 @@ export class Area extends React.Component {
                     case Constant.STATUS.LOADING:
                         return <Grid item xs>
                             <Paper style={theme.palette.primary} className="breadcrumb">
-                                <Typography style={theme.palette.breadcrumb} component={Link} to="/">Home</Typography>
+                                <Typography style={theme.palette.breadcrumb} component={Link} to="/">主頁</Typography>
                                 <KeyboardArrowRight style={theme.palette.breadcrumb} />
                                 <div className="skeleton-background skeleton-sm" />
                                 <KeyboardArrowRight style={theme.palette.breadcrumb} />
@@ -96,11 +93,11 @@ export class Area extends React.Component {
                                         <Card>
                                             <CardContent>
                                                 <Grid container spacing={24}>
-                                                    <Grid item xs={12} md={5} lg={4} className="inline">
+                                                    <Grid item className="inline info-box-key">
                                                         <div className="skeleton-background" style={{ height: "128px", width: "128px" }} />
                                                         <div className="skeleton-background" style={{ height: "128px", width: "128px" }} />
                                                     </Grid>
-                                                    <Grid item xs={12} md={7} lg={8}>
+                                                    <Grid item>
                                                         <div className="skeleton-background skeleton-md" style={{ marginBottom: "10px" }} />
                                                         <div className="skeleton-background skeleton-lg" />
                                                     </Grid>
@@ -142,7 +139,7 @@ export class Area extends React.Component {
                     case Constant.STATUS.SUCCESS:
                         return <Grid item xs>
                             <Paper style={theme.palette.primary} className="breadcrumb">
-                                <Typography style={theme.palette.breadcrumb} component={Link} to="/">Home</Typography>
+                                <Typography style={theme.palette.breadcrumb} component={Link} to="/">主頁</Typography>
                                 <KeyboardArrowRight style={theme.palette.breadcrumb} />
                                 <Typography style={theme.palette.breadcrumbLast} component="div">{this.state.questObj.area_cate_name}</Typography>
                                 <KeyboardArrowRight style={theme.palette.breadcrumb} />
@@ -156,11 +153,11 @@ export class Area extends React.Component {
                                         <Card>
                                             <CardContent>
                                                 <Grid container spacing={24}>
-                                                    <Grid item xs={12} md={5} lg={4} className="inline">
+                                                    <Grid item className="inline info-box-key">
                                                         <CardMedia className="img" image={"/img/panel/" + this.state.questObj.area_res_icon_key + ".png"} title="區域鑰匙" />
                                                         <CardMedia className="img" image={"/img/panel/" + this.state.questObj.area_res_icon_box + ".png"} title="區域寶箱" />
                                                     </Grid>
-                                                    <Grid item xs={12} md={7} lg={8}>
+                                                    <Grid item>
                                                         <Typography gutterBottom variant="headline">地下城中各色卡片出現機率</Typography>
                                                         <div className="inline">
                                                             <Chip avatar={<Avatar style={theme.palette.green} src="/img/icon/fire.jpg" />} label={this.state.questObj.area_element_fire + "%"} style={theme.palette.red} />

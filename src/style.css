@@ -1,5 +1,6 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
 
+/* Common */
 main{
     margin-top: 80px;
 }
@@ -25,6 +26,9 @@ a{
     width: 100%;
     padding: 20px;
 }
+/* End Common */
+
+/* Area */
 .full-width{
     width: 100%;
 }
@@ -43,6 +47,10 @@ a{
     height: 128px;
     width: 128px;
 }
+.info-box-key{
+    width: 280px;
+}
+/* End Area */
 
 /* Skeleton Screen */
 .skeleton-sm{

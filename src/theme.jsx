@@ -1,5 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import { red, orange, green, yellow, blue, indigo, purple, pink, teal } from '@material-ui/core/colors';
+import { red, orange, green, yellow, blue, indigo, purple, pink, teal, amber, grey, blueGrey, cyan, lightGreen } from '@material-ui/core/colors';
 
 export default createMuiTheme({
     palette: {
@@ -39,6 +39,24 @@ export default createMuiTheme({
         },
         pink: {
             backgroundColor: pink[300]
+        },
+        teal: {
+            backgroundColor: teal[500]
+        },
+        amber: {
+            backgroundColor: amber[500]
+        },
+        grey: {
+            backgroundColor: grey[500]
+        },
+        blueGrey: {
+            backgroundColor: blueGrey[500]
+        },
+        cyan: {
+            backgroundColor: cyan[500]
+        },
+        lightGreen: {
+            backgroundColor: lightGreen[500]
         },
         info: {
             color: blue[800],

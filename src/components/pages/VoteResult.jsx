@@ -185,7 +185,7 @@ export class VoteResult extends React.Component {
     render() {
         return <Grid container spacing={24}>
             <Paper style={theme.palette.primary} className="breadcrumb">
-                <Typography style={theme.palette.breadcrumb} component={Link} to="/">Home</Typography>
+                <Typography style={theme.palette.breadcrumb} component={Link} to="/">主頁</Typography>
                 <KeyboardArrowRight style={theme.palette.breadcrumb} />
                 <Typography style={theme.palette.breadcrumbLast} component="div">人氣投票結果</Typography>
             </Paper>
