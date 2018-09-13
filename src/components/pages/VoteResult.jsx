@@ -4,7 +4,6 @@ import * as Constant from '../Constant';
 import theme from '../../theme';
 import { Link } from 'react-router-dom';
 import { ErrorPage } from './ErrorPage';
-import { LoadingPage } from './LoadingPage';
 
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
@@ -192,178 +191,331 @@ export class VoteResult extends React.Component {
             </Paper>
             {(() => {
                 switch (this.state.status) {
-                    case Constant.STATUS.LOADING: return <Grid item xs><LoadingPage /></Grid>;
+                    case Constant.STATUS.LOADING:
+                        return <Grid item xs>
+                            <ExpansionPanel defaultExpanded={true}>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.indigo}>
+                                    <Typography>第十三回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    <Grid container spacing={24}>
+                                        <Grid item xs={12} md={4}>
+                                            <Typography variant="subheading" style={styles.center}>第一名</Typography>
+                                            <ListItem style={styles.noPadding}>
+                                                <ListItemAvatar>
+                                                    <Avatar style={styles.squareAvatar} className="skeleton-background" />
+                                                </ListItemAvatar>
+                                                <ListItemText className="skeleton-background skeleton-sm" />
+                                            </ListItem>
+                                        </Grid>
+                                        <Grid item xs={12} md={4}>
+                                            <Typography variant="subheading" style={styles.center}>第二名</Typography>
+                                            <ListItem style={styles.noPadding}>
+                                                <ListItemAvatar>
+                                                    <Avatar style={styles.squareAvatar} className="skeleton-background" />
+                                                </ListItemAvatar>
+                                                <ListItemText className="skeleton-background skeleton-sm" />
+                                            </ListItem>
+                                        </Grid>
+                                        <Grid item xs={12} md={4}>
+                                            <Typography variant="subheading" style={styles.center}>第三名</Typography>
+                                            <ListItem style={styles.noPadding}>
+                                                <ListItemAvatar>
+                                                    <Avatar style={styles.squareAvatar} className="skeleton-background" />
+                                                </ListItemAvatar>
+                                                <ListItemText className="skeleton-background skeleton-sm" />
+                                            </ListItem>
+                                        </Grid>
+                                        <Grid item xs={12}><Divider /></Grid>
+                                        <Grid item xs={12} className="multi-column"><List>
+                                            <ListItem dense={true}>
+                                                <ListItemAvatar>
+                                                    <Avatar style={styles.squareAvatar} className="skeleton-background" />
+                                                </ListItemAvatar>
+                                                <ListItemText className="skeleton-background skeleton-sm" />
+                                            </ListItem>
+                                            <ListItem dense={true}>
+                                                <ListItemAvatar>
+                                                    <Avatar style={styles.squareAvatar} className="skeleton-background" />
+                                                </ListItemAvatar>
+                                                <ListItemText className="skeleton-background skeleton-sm" />
+                                            </ListItem>
+                                            <ListItem dense={true}>
+                                                <ListItemAvatar>
+                                                    <Avatar style={styles.squareAvatar} className="skeleton-background" />
+                                                </ListItemAvatar>
+                                                <ListItemText className="skeleton-background skeleton-sm" />
+                                            </ListItem>
+                                            <ListItem dense={true}>
+                                                <ListItemAvatar>
+                                                    <Avatar style={styles.squareAvatar} className="skeleton-background" />
+                                                </ListItemAvatar>
+                                                <ListItemText className="skeleton-background skeleton-sm" />
+                                            </ListItem>
+                                            <ListItem dense={true}>
+                                                <ListItemAvatar>
+                                                    <Avatar style={styles.squareAvatar} className="skeleton-background" />
+                                                </ListItemAvatar>
+                                                <ListItemText className="skeleton-background skeleton-sm" />
+                                            </ListItem>
+                                            <ListItem dense={true}>
+                                                <ListItemAvatar>
+                                                    <Avatar style={styles.squareAvatar} className="skeleton-background" />
+                                                </ListItemAvatar>
+                                                <ListItemText className="skeleton-background skeleton-sm" />
+                                            </ListItem>
+                                            <ListItem dense={true}>
+                                                <ListItemAvatar>
+                                                    <Avatar style={styles.squareAvatar} className="skeleton-background" />
+                                                </ListItemAvatar>
+                                                <ListItemText className="skeleton-background skeleton-sm" />
+                                            </ListItem>
+                                            <ListItem dense={true}>
+                                                <ListItemAvatar>
+                                                    <Avatar style={styles.squareAvatar} className="skeleton-background" />
+                                                </ListItemAvatar>
+                                                <ListItemText className="skeleton-background skeleton-sm" />
+                                            </ListItem>
+                                            <ListItem dense={true}>
+                                                <ListItemAvatar>
+                                                    <Avatar style={styles.squareAvatar} className="skeleton-background" />
+                                                </ListItemAvatar>
+                                                <ListItemText className="skeleton-background skeleton-sm" />
+                                            </ListItem>
+                                        </List></Grid>
+                                    </Grid>
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.blue}>
+                                    <Typography>第十二回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.green}>
+                                    <Typography>第十一回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.yellow}>
+                                    <Typography style={theme.palette.yellow}>第十回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.orange}>
+                                    <Typography>第九回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.red}>
+                                    <Typography>第八回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.purple}>
+                                    <Typography>第七回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.indigo}>
+                                    <Typography>第六回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.blue}>
+                                    <Typography>第五回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.green}>
+                                    <Typography>第四回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.yellow}>
+                                    <Typography style={theme.palette.yellow}>第三回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.orange}>
+                                    <Typography>第二回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.red}>
+                                    <Typography>第一回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                            </ExpansionPanel>
+                        </Grid>;
                     case Constant.STATUS.ERROR: return <Grid item xs><ErrorPage /></Grid>;
                     case Constant.STATUS.SUCCESS:
-                        return <Grid container spacing={24}>
-                            <Grid item xs={12}>
-                                <ExpansionPanel>
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.indigo}>
-                                        <Typography>第十三回人氣投票</Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
-                                        <Grid container>
-                                            <Grid item xs={12}>
-                                                <Tabs value={this.state.tab13rd} onChange={this.handleChange13rd} textColor="secondary" fullWidth scrollable scrollButtons="auto">
-                                                    <Tab label="最喜歡的角色" style={theme.palette.yellow} />
-                                                    <Tab label="嬌起來很厲害" style={theme.palette.red} />
-                                                    <Tab label="會成為好伴侶" style={theme.palette.blue} />
-                                                    <Tab label="料理很厲害" style={theme.palette.green} />
-                                                </Tabs>
-                                            </Grid>
-                                            <Grid item xs={12}>
-                                                <SwipeableViews
-                                                    index={this.state.tab13rd}
-                                                    onChangeIndex={this.handleChangeIndex13rd}
-                                                    slideStyle={styles.slideStyle}
-                                                >
-                                                    {DrawVoteResult(this.state.jsonResult[13]['fav'])}
-                                                    {DrawVoteResult(this.state.jsonResult[13]['tsundere'])}
-                                                    {DrawVoteResult(this.state.jsonResult[13]['wife'])}
-                                                    {DrawVoteResult(this.state.jsonResult[13]['cook'])}
-                                                </SwipeableViews>
-                                            </Grid>
+                        return <Grid item xs={12}>
+                            <ExpansionPanel defaultExpanded={true}>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.indigo}>
+                                    <Typography>第十三回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    <Grid container>
+                                        <Grid item xs={12}>
+                                            <Tabs value={this.state.tab13rd} onChange={this.handleChange13rd} textColor="secondary" fullWidth scrollable scrollButtons="auto">
+                                                <Tab label="最喜歡的角色" style={theme.palette.yellow} />
+                                                <Tab label="嬌起來很厲害" style={theme.palette.red} />
+                                                <Tab label="會成為好伴侶" style={theme.palette.blue} />
+                                                <Tab label="料理很厲害" style={theme.palette.green} />
+                                            </Tabs>
                                         </Grid>
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                                <ExpansionPanel>
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.blue}>
-                                        <Typography>第十二回人氣投票</Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
-                                        {DrawVoteResult(this.state.jsonResult[12])}
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                                <ExpansionPanel>
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.green}>
-                                        <Typography>第十一回人氣投票</Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
-                                        {DrawVoteResult(this.state.jsonResult[11])}
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                                <ExpansionPanel>
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.yellow}>
-                                        <Typography style={theme.palette.yellow}>第十回人氣投票</Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
-                                        <Grid container>
-                                            <Grid item xs={12}>
-                                                <Paper elevation={1} style={theme.palette.info} className="inline box">
-                                                    <Typography color="inherit">是次排名是集計的，把各種進化、節日限定、衍生版本的票數合併計算</Typography>
-                                                </Paper>
-                                            </Grid>
-                                            {DrawVoteResult(this.state.jsonResult[10])}
+                                        <Grid item xs={12}>
+                                            <SwipeableViews
+                                                index={this.state.tab13rd}
+                                                onChangeIndex={this.handleChangeIndex13rd}
+                                                slideStyle={styles.slideStyle}
+                                            >
+                                                {DrawVoteResult(this.state.jsonResult[13]['fav'])}
+                                                {DrawVoteResult(this.state.jsonResult[13]['tsundere'])}
+                                                {DrawVoteResult(this.state.jsonResult[13]['wife'])}
+                                                {DrawVoteResult(this.state.jsonResult[13]['cook'])}
+                                            </SwipeableViews>
                                         </Grid>
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                                <ExpansionPanel>
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.orange}>
-                                        <Typography>第九回人氣投票</Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
-                                        <Grid container>
-                                            <Grid item xs={12}>
-                                                <Paper elevation={1} style={theme.palette.info} className="inline box">
-                                                    <Typography color="inherit">排名為</Typography><Typography color="inherit" component="a" href="http://dengekionline.com/elem/000/001/117/1117158/">電撃App 戦う！美少女キャラ総選挙 2015夏</Typography><Typography color="inherit">的結果</Typography>
-                                                </Paper>
-                                            </Grid>
-                                            {DrawVoteResult(this.state.jsonResult[9])}
+                                    </Grid>
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.blue}>
+                                    <Typography>第十二回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    {DrawVoteResult(this.state.jsonResult[12])}
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.green}>
+                                    <Typography>第十一回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    {DrawVoteResult(this.state.jsonResult[11])}
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.yellow}>
+                                    <Typography style={theme.palette.yellow}>第十回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    <Grid container>
+                                        <Grid item xs={12}>
+                                            <Paper elevation={1} style={theme.palette.info} className="inline box">
+                                                <Typography color="inherit">是次排名是集計的，把各種進化、節日限定、衍生版本的票數合併計算</Typography>
+                                            </Paper>
                                         </Grid>
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                                <ExpansionPanel>
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.red}>
-                                        <Typography>第八回人氣投票</Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
-                                        <Grid container>
-                                            <Grid item xs={12}>
-                                                <Tabs value={this.state.tab8th} onChange={this.handleChange8th} textColor="secondary" fullWidth scrollable scrollButtons="auto">
-                                                    <Tab label="總合" />
-                                                    <Tab label="炎屬性" style={theme.palette.red} />
-                                                    <Tab label="水屬性" style={theme.palette.blue} />
-                                                    <Tab label="風屬性" style={theme.palette.green} />
-                                                    <Tab label="光屬性" style={theme.palette.yellow} />
-                                                    <Tab label="暗屬性" style={theme.palette.purple} />
-                                                    <Tab label="無屬性" />
-                                                </Tabs>
-                                            </Grid>
-                                            <Grid item xs={12}>
-                                                <SwipeableViews
-                                                    index={this.state.tab8th}
-                                                    onChangeIndex={this.handleChangeIndex8th}
-                                                    slideStyle={styles.slideStyle}
-                                                >
-                                                    {DrawVoteResult(this.state.jsonResult[8]['all'])}
-                                                    {DrawVoteResult(this.state.jsonResult[8]['fire'])}
-                                                    {DrawVoteResult(this.state.jsonResult[8]['water'])}
-                                                    {DrawVoteResult(this.state.jsonResult[8]['wind'])}
-                                                    {DrawVoteResult(this.state.jsonResult[8]['light'])}
-                                                    {DrawVoteResult(this.state.jsonResult[8]['dark'])}
-                                                    {DrawVoteResult(this.state.jsonResult[8]['none'])}
-                                                </SwipeableViews>
-                                            </Grid>
+                                        {DrawVoteResult(this.state.jsonResult[10])}
+                                    </Grid>
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.orange}>
+                                    <Typography>第九回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    <Grid container>
+                                        <Grid item xs={12}>
+                                            <Paper elevation={1} style={theme.palette.info} className="inline box">
+                                                <Typography color="inherit">排名為</Typography><Typography color="inherit" component="a" href="http://dengekionline.com/elem/000/001/117/1117158/">電撃App 戦う！美少女キャラ総選挙 2015夏</Typography><Typography color="inherit">的結果</Typography>
+                                            </Paper>
                                         </Grid>
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                                <ExpansionPanel>
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.purple}>
-                                        <Typography>第七回人氣投票</Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
-                                        {DrawVoteResult(this.state.jsonResult[7])}
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                                <ExpansionPanel>
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.indigo}>
-                                        <Typography>第六回人氣投票</Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
-                                        {DrawVoteResult(this.state.jsonResult[6])}
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                                <ExpansionPanel>
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.blue}>
-                                        <Typography>第五回人氣投票</Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
-                                        {DrawVoteResult(this.state.jsonResult[5])}
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                                <ExpansionPanel>
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.green}>
-                                        <Typography>第四回人氣投票</Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
-                                        {DrawVoteResult(this.state.jsonResult[4])}
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                                <ExpansionPanel>
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.yellow}>
-                                        <Typography style={theme.palette.yellow}>第三回人氣投票</Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
-                                        {DrawVoteResult(this.state.jsonResult[3])}
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                                <ExpansionPanel>
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.orange}>
-                                        <Typography>第二回人氣投票</Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
-                                        {DrawVoteResult(this.state.jsonResult[2])}
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                                <ExpansionPanel>
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.red}>
-                                        <Typography>第一回人氣投票</Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
-                                        {DrawVoteResult(this.state.jsonResult[1])}
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
-                            </Grid>
+                                        {DrawVoteResult(this.state.jsonResult[9])}
+                                    </Grid>
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.red}>
+                                    <Typography>第八回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    <Grid container>
+                                        <Grid item xs={12}>
+                                            <Tabs value={this.state.tab8th} onChange={this.handleChange8th} textColor="secondary" fullWidth scrollable scrollButtons="auto">
+                                                <Tab label="總合" />
+                                                <Tab label="炎屬性" style={theme.palette.red} />
+                                                <Tab label="水屬性" style={theme.palette.blue} />
+                                                <Tab label="風屬性" style={theme.palette.green} />
+                                                <Tab label="光屬性" style={theme.palette.yellow} />
+                                                <Tab label="暗屬性" style={theme.palette.purple} />
+                                                <Tab label="無屬性" />
+                                            </Tabs>
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <SwipeableViews
+                                                index={this.state.tab8th}
+                                                onChangeIndex={this.handleChangeIndex8th}
+                                                slideStyle={styles.slideStyle}
+                                            >
+                                                {DrawVoteResult(this.state.jsonResult[8]['all'])}
+                                                {DrawVoteResult(this.state.jsonResult[8]['fire'])}
+                                                {DrawVoteResult(this.state.jsonResult[8]['water'])}
+                                                {DrawVoteResult(this.state.jsonResult[8]['wind'])}
+                                                {DrawVoteResult(this.state.jsonResult[8]['light'])}
+                                                {DrawVoteResult(this.state.jsonResult[8]['dark'])}
+                                                {DrawVoteResult(this.state.jsonResult[8]['none'])}
+                                            </SwipeableViews>
+                                        </Grid>
+                                    </Grid>
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.purple}>
+                                    <Typography>第七回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    {DrawVoteResult(this.state.jsonResult[7])}
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.indigo}>
+                                    <Typography>第六回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    {DrawVoteResult(this.state.jsonResult[6])}
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.blue}>
+                                    <Typography>第五回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    {DrawVoteResult(this.state.jsonResult[5])}
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.green}>
+                                    <Typography>第四回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    {DrawVoteResult(this.state.jsonResult[4])}
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.yellow}>
+                                    <Typography style={theme.palette.yellow}>第三回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    {DrawVoteResult(this.state.jsonResult[3])}
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.orange}>
+                                    <Typography>第二回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    {DrawVoteResult(this.state.jsonResult[2])}
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={theme.palette.red}>
+                                    <Typography>第一回人氣投票</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    {DrawVoteResult(this.state.jsonResult[1])}
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
                         </Grid>;
                 }
             })()}
