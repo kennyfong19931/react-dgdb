@@ -24,7 +24,7 @@ const DrawQuest = (list) => (
             <Card>
                 <CardActionArea component={Link} to={"/quest/" + map.quest_id}>
                     <CardContent>
-                        <Typography gutterBottom variant="headline" dangerouslySetInnerHTML={{ __html: parseColorTag(map.quest_name, false) }} />
+                        <Typography gutterBottom variant="headline">{parseColorTag(map.quest_name, false)}</Typography>
                         <Typography>入場要求: 體力: {map.quest_stamina} 券: {map.quest_ticket} 鑰匙:{map.quest_key}</Typography>
                         <Typography>關卡層數: {map.floor_count}</Typography>
                     </CardContent>
@@ -43,7 +43,7 @@ export class Area extends React.Component {
         this.urlParams = props.match.params;
         this.state = {
             status: Constant.STATUS.LOADING,
-            questObj: {}
+            jsonObj: {}
         };
     }
 
@@ -63,7 +63,7 @@ export class Area extends React.Component {
             })
             .then((json) => this.setState({
                 status: Constant.STATUS.SUCCESS,
-                questObj: json
+                jsonObj: json
             }))
             .catch((err) => {
                 console.log(err);
@@ -141,41 +141,41 @@ export class Area extends React.Component {
                             <Paper style={theme.palette.primary} className="breadcrumb">
                                 <Typography style={theme.palette.breadcrumb} component={Link} to="/">主頁</Typography>
                                 <KeyboardArrowRight style={theme.palette.breadcrumb} />
-                                <Typography style={theme.palette.breadcrumbLast} component="div">{this.state.questObj.area_cate_name}</Typography>
+                                <Typography style={theme.palette.breadcrumbLast} component="div">{this.state.jsonObj.area_cate_name}</Typography>
                                 <KeyboardArrowRight style={theme.palette.breadcrumb} />
-                                <Typography style={theme.palette.breadcrumbLast} component="div">{this.state.questObj.area}</Typography>
+                                <Typography style={theme.palette.breadcrumbLast} component="div">{this.state.jsonObj.area}</Typography>
                             </Paper>
-                            <img className="full-width" src={"/img/area/" + this.state.questObj.area_res_map + "_upper.png"} />
+                            <img className="full-width" src={"/img/area/" + this.state.jsonObj.area_res_map + "_upper.png"} />
                             <div className="map">
-                                <img className="full-width" src={"/img/area/" + this.state.questObj.area_res_map + "_lower.png"} />
+                                <img className="full-width" src={"/img/area/" + this.state.jsonObj.area_res_map + "_lower.png"} />
                                 <Grid container spacing={24} className="content">
                                     <Grid item xs={12}>
                                         <Card>
                                             <CardContent>
                                                 <Grid container spacing={24}>
                                                     <Grid item className="inline info-box-key">
-                                                        <CardMedia className="img" image={"/img/panel/" + this.state.questObj.area_res_icon_key + ".png"} title="區域鑰匙" />
-                                                        <CardMedia className="img" image={"/img/panel/" + this.state.questObj.area_res_icon_box + ".png"} title="區域寶箱" />
+                                                        <CardMedia className="img" image={"/img/panel/" + this.state.jsonObj.area_res_icon_key + ".png"} title="區域鑰匙" />
+                                                        <CardMedia className="img" image={"/img/panel/" + this.state.jsonObj.area_res_icon_box + ".png"} title="區域寶箱" />
                                                     </Grid>
                                                     <Grid item>
                                                         <Typography gutterBottom variant="headline">地下城中各色卡片出現機率</Typography>
                                                         <div className="inline">
-                                                            <Chip avatar={<Avatar style={theme.palette.green} src="/img/icon/fire.jpg" />} label={this.state.questObj.area_element_fire + "%"} style={theme.palette.red} />
-                                                            <Chip avatar={<Avatar style={theme.palette.green} src="/img/icon/water.jpg" />} label={this.state.questObj.area_element_water + "%"} style={theme.palette.blue} />
-                                                            <Chip avatar={<Avatar style={theme.palette.green} src="/img/icon/wind.jpg" />} label={this.state.questObj.area_element_wind + "%"} style={theme.palette.green} />
-                                                            <Chip avatar={<Avatar style={theme.palette.green} src="/img/icon/light.jpg" />} label={this.state.questObj.area_element_light + "%"} style={theme.palette.yellow} />
-                                                            <Chip avatar={<Avatar style={theme.palette.green} src="/img/icon/dark.jpg" />} label={this.state.questObj.area_element_dark + "%"} style={theme.palette.purple} />
-                                                            <Chip avatar={<Avatar style={theme.palette.green} src="/img/icon/none.jpg" />} label={this.state.questObj.area_element_none + "%"} style={theme.palette.white} />
-                                                            <Chip avatar={<Avatar style={theme.palette.green} src="/img/icon/life.jpg" />} label={this.state.questObj.area_element_life + "%"} style={theme.palette.pink} />
+                                                            <Chip avatar={<Avatar style={theme.palette.green} src="/img/icon/fire.jpg" />} label={this.state.jsonObj.area_element_fire + "%"} style={theme.palette.red} />
+                                                            <Chip avatar={<Avatar style={theme.palette.green} src="/img/icon/water.jpg" />} label={this.state.jsonObj.area_element_water + "%"} style={theme.palette.blue} />
+                                                            <Chip avatar={<Avatar style={theme.palette.green} src="/img/icon/wind.jpg" />} label={this.state.jsonObj.area_element_wind + "%"} style={theme.palette.green} />
+                                                            <Chip avatar={<Avatar style={theme.palette.green} src="/img/icon/light.jpg" />} label={this.state.jsonObj.area_element_light + "%"} style={theme.palette.yellow} />
+                                                            <Chip avatar={<Avatar style={theme.palette.green} src="/img/icon/dark.jpg" />} label={this.state.jsonObj.area_element_dark + "%"} style={theme.palette.purple} />
+                                                            <Chip avatar={<Avatar style={theme.palette.green} src="/img/icon/none.jpg" />} label={this.state.jsonObj.area_element_none + "%"} style={theme.palette.white} />
+                                                            <Chip avatar={<Avatar style={theme.palette.green} src="/img/icon/life.jpg" />} label={this.state.jsonObj.area_element_life + "%"} style={theme.palette.pink} />
                                                         </div>
-                                                        <br/>
-                                                        {this.state.questObj.area_url && <Button variant="contained" component="a" href={this.state.questObj.area_url} target="_blank" style={{ margin: "5px" }}>官方活動頁面: {this.state.questObj.area_cate_name}</Button>}
+                                                        <br />
+                                                        {this.state.jsonObj.area_url && <Button variant="contained" component="a" href={this.state.jsonObj.area_url} target="_blank" style={{ margin: "5px" }}>官方活動頁面: {this.state.jsonObj.area_cate_name}</Button>}
                                                     </Grid>
                                                 </Grid>
                                             </CardContent>
                                         </Card>
                                     </Grid>
-                                    {DrawQuest(this.state.questObj.quest)}
+                                    {DrawQuest(this.state.jsonObj.quest)}
                                 </Grid>
                             </div>
                         </Grid>

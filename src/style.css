@@ -1,20 +1,18 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
 
 /* Common */
-main{
-    margin-top: 80px;
-}
 a{
     text-decoration: none;
 }
 .container{
-    margin:0 auto;
+    margin:80px auto 10px auto;
     max-width:1280px;
     width:90%
 }
 .inline{
     display: inline-flex;
     flex-wrap: wrap;
+    align-items: center;
 }
 .box{
     width: 100%;
@@ -51,6 +49,27 @@ a{
     width: 280px;
 }
 /* End Area */
+
+/* Quest */
+.quest-requirement>li::before{
+    position: relative;
+    content: "\25A0";
+    left: -10px;
+    width: 10px;
+    color: #fff;
+}
+.quest-requirement>ul>li{
+    position: relative;
+    left: 10px;
+}
+.quest-requirement>ul>li::before{
+    position: relative;
+    content: "\2514";
+    left: -10px;
+    width: 10px;
+    color: #fff;
+}
+/* End Quest */
 
 /* Skeleton Screen */
 .skeleton-sm{

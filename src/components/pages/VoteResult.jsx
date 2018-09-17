@@ -4,6 +4,7 @@ import * as Constant from '../Constant';
 import theme from '../../theme';
 import { Link } from 'react-router-dom';
 import { ErrorPage } from './ErrorPage';
+import { UnitIcon } from '../Util';
 
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
@@ -27,9 +28,6 @@ import { KeyboardArrowRight, TrendingUp, TrendingDown, TrendingFlat, NewReleases
 const styles = {
     squareAvatar: {
         borderRadius: 0
-    },
-    center: {
-        textAlign: "center"
     },
     noPadding: {
         padding: 0
@@ -74,10 +72,10 @@ const DrawVoteResult = (list) => (
                 tag = "第三名";
             }
             return <Grid item xs={12} md={4} key={map.rank + map.unit.draw_id}>
-                <Typography variant="subheading" style={styles.center}>{tag}</Typography>
+                <Typography variant="subheading" align="center">{tag}</Typography>
                 <ListItem component={Link} to={"/unit/" + map.unit.draw_id} style={styles.noPadding}>
                     <ListItemAvatar>
-                        <Avatar src={map.unit.image} alt={map.unit.name} style={styles.squareAvatar} />
+                        <UnitIcon name={map.unit.name} draw_id={map.unit.draw_id} image={map.unit.image}/>
                     </ListItemAvatar>
                     <ListItemText primary={map.unit.name} />
                     {DrawRank(map.type, map.change)}
@@ -90,7 +88,7 @@ const DrawVoteResult = (list) => (
                 if (map.rank > 3) {
                     return <ListItem key={map.rank + map.unit.draw_id} component={Link} to={"/unit/" + map.unit.draw_id} dense={true}>
                         <ListItemAvatar>
-                            <Avatar src={map.unit.image} alt={map.unit.name} style={styles.squareAvatar} />
+                            <UnitIcon name={map.unit.name} draw_id={map.unit.draw_id} image={map.unit.image}/>
                         </ListItemAvatar>
                         <ListItemText primary={map.rank + ". " + map.unit.name} />
                         {DrawRank(map.type, map.change)}
@@ -200,7 +198,7 @@ export class VoteResult extends React.Component {
                                 <ExpansionPanelDetails>
                                     <Grid container spacing={24}>
                                         <Grid item xs={12} md={4}>
-                                            <Typography variant="subheading" style={styles.center}>第一名</Typography>
+                                            <Typography variant="subheading" align="center">第一名</Typography>
                                             <ListItem style={styles.noPadding}>
                                                 <ListItemAvatar>
                                                     <Avatar style={styles.squareAvatar} className="skeleton-background" />
@@ -209,7 +207,7 @@ export class VoteResult extends React.Component {
                                             </ListItem>
                                         </Grid>
                                         <Grid item xs={12} md={4}>
-                                            <Typography variant="subheading" style={styles.center}>第二名</Typography>
+                                            <Typography variant="subheading" align="center">第二名</Typography>
                                             <ListItem style={styles.noPadding}>
                                                 <ListItemAvatar>
                                                     <Avatar style={styles.squareAvatar} className="skeleton-background" />
@@ -218,7 +216,7 @@ export class VoteResult extends React.Component {
                                             </ListItem>
                                         </Grid>
                                         <Grid item xs={12} md={4}>
-                                            <Typography variant="subheading" style={styles.center}>第三名</Typography>
+                                            <Typography variant="subheading" align="center">第三名</Typography>
                                             <ListItem style={styles.noPadding}>
                                                 <ListItemAvatar>
                                                     <Avatar style={styles.squareAvatar} className="skeleton-background" />

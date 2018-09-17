@@ -64,8 +64,8 @@ const DrawAreaCat = (type, list) => (
         {DrawCardHeader(type)}
         <CardContent style={styles.cardPadding}>
             <List subheader={<li />}>
-                {list[type].map((cate) => {
-                    return <ListSubheader key={type + "_" + cate.area_cate_type + "_" + cate.area_cate_sort} disableGutters={true}>
+                {list[type].map((cate, index) => {
+                    return <ListSubheader key={type + "_" + cate.area_cate_type + "_" + index} disableGutters={true}>
                         {cate.area_cate_name}
                         {cate.areas && cate.areas.map((area) => {
                             return <ListItem key={area.area_id} component={Link} to={"/area/" + area.area_id} dense={true} disableGutters={true}>
@@ -73,11 +73,11 @@ const DrawAreaCat = (type, list) => (
                                     <Avatar src={area.boss.image} alt={area.boss.name} style={styles.squareAvatar} />
                                 </ListItemAvatar>
                                 <ListItemText>
-                                    <Typography dangerouslySetInnerHTML={{ __html: parseColorTag(area.area_name, true) }} />
+                                    <Typography>{parseColorTag(area.area_name, true)}</Typography>
                                 </ListItemText>
                             </ListItem>
                         })}
-                        </ListSubheader>
+                    </ListSubheader>
                 })}
             </List>
         </CardContent>

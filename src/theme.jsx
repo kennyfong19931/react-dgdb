@@ -91,6 +91,16 @@ export default createMuiTheme({
                 backgroundColor: teal[400]
             }
         },
+        MuiAppBar:{
+            positionSticky: {
+                top: "64px"
+            }
+        },
+        MuiTableCell:{
+            root:{
+                padding: "4px 6px"
+            }
+        },
     },
     typography: {
         // Use the system font instead of the default Roboto font.
