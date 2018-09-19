@@ -4,10 +4,16 @@
 a{
     text-decoration: none;
 }
+#app{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 .container{
     margin:80px auto 10px auto;
     max-width:1280px;
-    width:90%
+    width:90%;
+    flex: 1;
 }
 .inline{
     display: inline-flex;

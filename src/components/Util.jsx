@@ -38,6 +38,13 @@ export function parseColorTag(input, isRemove) {
     }
 }
 
+export function json_to_b64(str) {
+    return window.btoa(unescape(encodeURIComponent(JSON.stringify(str))));
+}
+export function b64_to_json(str) {
+    return JSON.parse(decodeURIComponent(escape(window.atob(str))));
+}
+
 export class UnitIcon extends React.Component {
     constructor(props) {
         super(props);
@@ -54,7 +61,7 @@ export class UnitIcon extends React.Component {
         name: '',
         draw_id: 0,
         image: '',
-        size: 40
+        size: 40,
     }
 
     render() {

@@ -28,7 +28,7 @@ const App = () => (
                 <Route exact strict path="/skill/:type(l|n|p|ln|lp)" component={Pages.Skill} />
                 <Route exact strict path="/story" component={Pages.Story} />
                 <Route exact strict path="/unit/:id(\d+)" component={Pages.Unit} />
-                <Route exact strict path="/unitlist" component={Pages.UnitList} />
+                <Route exact strict path="/unitlist/:series?" component={Pages.UnitList} />
                 <Route exact strict path="/voteResult" component={Pages.VoteResult} />
                 <Route component={Pages.ErrorPage} />
             </Switch>
