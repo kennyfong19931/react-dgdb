@@ -21,3 +21,6 @@ export class VOTE_RESULT_TYPE {
     static EQUAL = "equal";
     static NEW = "new";
 }
+export class COMMON {
+    static SITE_NAME = "Divine Gate 資料庫"
+}
