@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Helmet } from "react-helmet";
 import * as Constant from '../Constant';
 import theme from '../../theme';
 import { Link } from 'react-router-dom';
@@ -182,6 +183,14 @@ export class VoteResult extends React.Component {
     }
     render() {
         return <Grid container spacing={24}>
+            <Helmet>
+                <title>人氣投票結果 - {Constant.COMMON.SITE_NAME}</title>
+
+                <meta property="og:title" content="人氣投票結果" />
+                <meta property="og:description" content="Divine Gate 所有人氣投票結果" />
+                <meta property="og:site_name" content={Constant.COMMON.SITE_NAME} />
+                <meta property="og:url" content={Constant.COMMON.HOST} />
+            </Helmet>
             <Paper style={theme.palette.primary} className="breadcrumb">
                 <Typography style={theme.palette.breadcrumb} component={Link} to="/">主頁</Typography>
                 <KeyboardArrowRight style={theme.palette.breadcrumb} />

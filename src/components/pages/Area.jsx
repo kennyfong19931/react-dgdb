@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Helmet } from "react-helmet";
 import * as Constant from '../Constant';
 import { Link } from 'react-router-dom';
 import theme from '../../theme';
@@ -75,6 +76,18 @@ export class Area extends React.Component {
 
     render() {
         return <Grid container spacing={24}>
+            <Helmet>
+                <title>{this.state.jsonObj.area} - {Constant.COMMON.SITE_NAME}</title>
+
+                <meta property="og:title" content={this.state.jsonObj.area} />
+                <meta property="og:description" content={this.state.jsonObj.area + '資料'} />
+                <meta property="og:site_name" content={Constant.COMMON.SITE_NAME} />
+                <meta property="og:url" content={Constant.COMMON.HOST} />
+                <meta property="og:image" content={"/img/area/" + this.state.jsonObj.area_res_map + "_upper.png"} />
+                <meta property="og:image" content={"/img/area/" + this.state.jsonObj.area_res_map + "_lower.png"} />
+                <meta property="og:image" content={"/img/panel/" + this.state.jsonObj.area_res_icon_key + ".png"} />
+                <meta property="og:image" content={"/img/panel/" + this.state.jsonObj.area_res_icon_box + ".png"} />
+            </Helmet>
             {(() => {
                 switch (this.state.status) {
                     case Constant.STATUS.LOADING:

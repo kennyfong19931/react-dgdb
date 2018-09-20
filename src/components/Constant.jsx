@@ -1,14 +1,17 @@
-export class URL {
+export class COMMON {
     static HOST = 'http://localhost/dgdb/';
-    static AREA = URL.HOST + 'api/area/';
-    static QUEST = URL.HOST + 'api/quest/';
-    static QUESTLIST = URL.HOST + 'api/questlist';
-    static RANK = URL.HOST + 'api/rank';
-    static SKILL = URL.HOST + 'api/skill/';
-    static STORY = URL.HOST + 'api/story';
-    static UNIT = URL.HOST + 'api/unit/';
-    static UNITLIST = URL.HOST + 'api/unitlist';
-    static VOTE_RESULT = URL.HOST + 'api/voteresult/';
+    static SITE_NAME = "Divine Gate 資料庫"
+}
+export class URL {
+    static AREA = COMMON.HOST + 'api/area/';
+    static QUEST = COMMON.HOST + 'api/quest/';
+    static QUESTLIST = COMMON.HOST + 'api/questlist';
+    static RANK = COMMON.HOST + 'api/rank';
+    static SKILL = COMMON.HOST + 'api/skill/';
+    static STORY = COMMON.HOST + 'api/story';
+    static UNIT = COMMON.HOST + 'api/unit/';
+    static UNITLIST = COMMON.HOST + 'api/unitlist';
+    static VOTE_RESULT = COMMON.HOST + 'api/voteresult/';
 }
 export class STATUS {
     static LOADING = 0;
@@ -20,7 +23,4 @@ export class VOTE_RESULT_TYPE {
     static DOWN = "down";
     static EQUAL = "equal";
     static NEW = "new";
-}
-export class COMMON {
-    static SITE_NAME = "Divine Gate 資料庫"
 }

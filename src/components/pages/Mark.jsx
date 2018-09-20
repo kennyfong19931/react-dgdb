@@ -49,10 +49,8 @@ export class Mark extends React.Component {
 
                 <meta property="og:title" content="DG點心紙" />
                 <meta property="og:description" content="標記擁有的Unit" />
-                <meta property="og:locale" content="zh_HK" />
-                <meta property="og:url" content="/" />
-                <meta property="og:site_name" content="Divine Gate 資料庫" />
-                <meta property="og:image" content="/img/favicon.png" />
+                <meta property="og:site_name" content={Constant.COMMON.SITE_NAME} />
+                <meta property="og:url" content={Constant.COMMON.HOST} />
             </Helmet>
             <Paper style={theme.palette.primary} className="breadcrumb">
                 <Typography style={theme.palette.breadcrumb} component={Link} to="/">主頁</Typography>
