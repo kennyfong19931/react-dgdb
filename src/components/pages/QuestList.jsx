@@ -126,8 +126,6 @@ export class QuestList extends React.Component {
 
                 <meta property="og:title" content="地下城列表" />
                 <meta property="og:description" content="Divine Gate 全地下城列表" />
-                <meta property="og:site_name" content={Constant.COMMON.SITE_NAME} />
-                <meta property="og:url" content={Constant.COMMON.HOST} />
             </Helmet>
             <Paper style={theme.palette.primary} className="breadcrumb">
                 <Typography style={theme.palette.breadcrumb} component={Link} to="/">主頁</Typography>

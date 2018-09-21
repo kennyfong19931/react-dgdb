@@ -49,8 +49,6 @@ export class Mark extends React.Component {
 
                 <meta property="og:title" content="DG點心紙" />
                 <meta property="og:description" content="標記擁有的Unit" />
-                <meta property="og:site_name" content={Constant.COMMON.SITE_NAME} />
-                <meta property="og:url" content={Constant.COMMON.HOST} />
             </Helmet>
             <Paper style={theme.palette.primary} className="breadcrumb">
                 <Typography style={theme.palette.breadcrumb} component={Link} to="/">主頁</Typography>

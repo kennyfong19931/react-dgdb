@@ -1,5 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { Helmet } from "react-helmet";
+import * as Constant from './Constant';
 
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import theme from '../theme';
@@ -15,6 +17,14 @@ import * as Pages from './pages';
 
 const App = () => (
     <MuiThemeProvider theme={theme}>
+        <Helmet>
+            <title>{Constant.COMMON.SITE_NAME}</title>
+
+            <meta property="og:title" content={Constant.COMMON.SITE_NAME} />
+            <meta property="og:description" content={Constant.COMMON.SITE_NAME} />
+            <meta property="og:site_name" content={Constant.COMMON.SITE_NAME} />
+            <meta property="og:url" content={Constant.COMMON.HOST} />
+        </Helmet>
         <Header />
         <CssBaseline />
         <main className="container">
@@ -25,7 +35,7 @@ const App = () => (
                 <Route exact strict path="/mark/:type(rare|collabo)" component={Pages.Mark} />
                 <Route exact strict path="/quest/:id(\d+)" component={Pages.Quest} />
                 <Route exact strict path="/questlist" component={Pages.QuestList} />
-                <Route exact strict path="/skill/:type(l|n|p|ln|lp)" component={Pages.Skill} />
+                <Route exact strict path="/skill/:type(l|a|n|p|ln|lp)" component={Pages.Skill} />
                 <Route exact strict path="/story" component={Pages.Story} />
                 <Route exact strict path="/unit/:id(\d+)" component={Pages.Unit} />
                 <Route exact strict path="/unitlist/:series?" component={Pages.UnitList} />

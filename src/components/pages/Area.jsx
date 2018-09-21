@@ -76,18 +76,6 @@ export class Area extends React.Component {
 
     render() {
         return <Grid container spacing={24}>
-            <Helmet>
-                <title>{this.state.jsonObj.area} - {Constant.COMMON.SITE_NAME}</title>
-
-                <meta property="og:title" content={this.state.jsonObj.area} />
-                <meta property="og:description" content={this.state.jsonObj.area + '資料'} />
-                <meta property="og:site_name" content={Constant.COMMON.SITE_NAME} />
-                <meta property="og:url" content={Constant.COMMON.HOST} />
-                <meta property="og:image" content={"/img/area/" + this.state.jsonObj.area_res_map + "_upper.png"} />
-                <meta property="og:image" content={"/img/area/" + this.state.jsonObj.area_res_map + "_lower.png"} />
-                <meta property="og:image" content={"/img/panel/" + this.state.jsonObj.area_res_icon_key + ".png"} />
-                <meta property="og:image" content={"/img/panel/" + this.state.jsonObj.area_res_icon_box + ".png"} />
-            </Helmet>
             {(() => {
                 switch (this.state.status) {
                     case Constant.STATUS.LOADING:
@@ -151,6 +139,16 @@ export class Area extends React.Component {
                     case Constant.STATUS.ERROR: return <Grid item xs><ErrorPage /></Grid>;
                     case Constant.STATUS.SUCCESS:
                         return <Grid item xs>
+                            <Helmet>
+                                <title>{this.state.jsonObj.area + " - " + Constant.COMMON.SITE_NAME}</title>
+                
+                                <meta property="og:title" content={this.state.jsonObj.area} />
+                                <meta property="og:description" content={this.state.jsonObj.area + '資料'} />
+                                <meta property="og:image" content={"/img/area/" + this.state.jsonObj.area_res_map + "_upper.png"} />
+                                <meta property="og:image" content={"/img/area/" + this.state.jsonObj.area_res_map + "_lower.png"} />
+                                <meta property="og:image" content={"/img/panel/" + this.state.jsonObj.area_res_icon_key + ".png"} />
+                                <meta property="og:image" content={"/img/panel/" + this.state.jsonObj.area_res_icon_box + ".png"} />
+                            </Helmet>
                             <Paper style={theme.palette.primary} className="breadcrumb">
                                 <Typography style={theme.palette.breadcrumb} component={Link} to="/">主頁</Typography>
                                 <KeyboardArrowRight style={theme.palette.breadcrumb} />

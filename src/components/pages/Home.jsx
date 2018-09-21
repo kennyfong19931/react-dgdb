@@ -1,6 +1,4 @@
 import React from 'react';
-import { Helmet } from "react-helmet";
-import * as Constant from '../Constant';
 import { Link } from 'react-router-dom';
 
 import Typography from '@material-ui/core/Typography';
@@ -13,14 +11,6 @@ export class Home extends React.Component {
     
     render() {
         return <div>
-            <Helmet>
-                <title>{Constant.COMMON.SITE_NAME}</title>
-
-                <meta property="og:title" content={Constant.COMMON.SITE_NAME} />
-                <meta property="og:description" content={Constant.COMMON.SITE_NAME} />
-                <meta property="og:site_name" content={Constant.COMMON.SITE_NAME} />
-                <meta property="og:url" content={Constant.COMMON.HOST} />
-            </Helmet>
             <Typography variant="title">Home</Typography>
             <List>
                 <ListItem button component={Link}  to="/about">

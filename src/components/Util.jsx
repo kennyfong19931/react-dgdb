@@ -1,39 +1,69 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazyload';
 
 import Tooltip from '@material-ui/core/Tooltip';
-// import Typography from '@material-ui/core/Typography';
 
-export function parseColorTag(input, isRemove) {
-    const regex = /\[([A-Fa-f0-9]{6}|w{3})\](.+?)\[\-\]/gm; // eslint-disable-line no-useless-escape
-    if (isRemove) {
-        if (regex.exec(input) !== null) {
-            input = input.replace(regex, '$2');
-            // remove extra [-]
-            input = input.replace(/\[\-\]/g, ''); // eslint-disable-line no-useless-escape
-        } else {
-            // remove extra [-]
-            input = input.replace(/\[\-\]/g, ''); // eslint-disable-line no-useless-escape
-        }
-        return input;
-    } else {
-        let m;
-        let output = [];
-        let inputArr = input.split(/(\[(?:[A-Fa-f0-9]{6}|w{3})\](?:.)\[\-\])/gm); // eslint-disable-line no-useless-escape
-        inputArr.map((value, index) => {
-            if ((m = regex.exec(value)) !== null) {
-                // This is necessary to avoid infinite loops with zero-width matches
-                if (m.index === regex.lastIndex) {
-                    regex.lastIndex++;
-                }
+export function parseColorTag(input, isRemove = false) {
+    if (input == undefined || input == '') return '';
+    console.log(input);
+    const colorRegex = /\[([A-Fa-f0-9]{6}|w{3})\](.+?)\[\-\]/gm; // eslint-disable-line no-useless-escape
+    const colorRegex2 = /(\[(?:[A-Fa-f0-9]{6}|w{3})\](?:.+?)\[\-\])/gm; // eslint-disable-line no-useless-escape
+    const colorEndTagRegex = /\[\-\]/g; // eslint-disable-line no-useless-escape
+    const imgRegex = /<img src="http:\/\/img\.qov\.tw(.+?)" alt="(.+?)"\/>/gm;
+    const imgRegex2 = /(<img src="(?:.+?)" alt="(?:.+?)"\/>)/gm;
+    let m;
+    let output = [];
 
-                output.push(<span key={"parse-color-" + index} variant="inherit" style={{ color: "#" + m[1] }}>{m[2]}</span>);
-            } else {
-                // remove extra [-]
-                output.push(<span key={"parse-color-" + index} variant="inherit">{value.replace(/\[\-\]/g, '')}</span>); // eslint-disable-line no-useless-escape
+    // handle img tag
+    let inputArr = [input];
+    if (imgRegex2.exec(input) !== null) {
+        inputArr = input.split(imgRegex2);
+    }
+    inputArr.map((value, index) => {
+        if ((m = imgRegex.exec(value)) !== null) {
+            // This is necessary to avoid infinite loops with zero-width matches
+            if (m.index === imgRegex.lastIndex) {
+                imgRegex.lastIndex++;
             }
-        });
+
+            output.push(<img key={"parse-color-" + index} src={"/img" + m[1]} alt={m[2]} />);
+        } else {
+            if (isRemove) {
+                if (colorRegex.exec(value) !== null) {
+                    value = value.replace(colorRegex, '$2');
+                }
+                // remove extra [-]
+                value = value.replace(colorEndTagRegex, '');
+                output.push(value);
+            } else {
+                if (colorRegex2.exec(value) !== null) {
+                    value.split(colorRegex2).map((value, index2) => {
+                        if ((m = colorRegex.exec(value)) !== null) {
+                            // This is necessary to avoid infinite loops with zero-width matches
+                            if (m.index === colorRegex.lastIndex) {
+                                colorRegex.lastIndex++;
+                            }
+
+                            output.push(<span key={"parse-color-" + index + "-" + index2} variant="inherit" style={{ color: "#" + m[1] }}>{m[2]}</span>);
+                        } else if (colorEndTagRegex.exec(value) !== null) {
+                            // remove extra [-]
+                            output.push(<span key={"parse-color-" + index + "-" + index2} variant="inherit">{value.replace(colorEndTagRegex, '')}</span>);
+                        } else {
+                            output.push(<span key={"parse-color-" + index + "-" + index2} variant="inherit">{value}</span>);
+                        }
+                    });
+                } else {
+                    output.push(<span key={"parse-color-" + index} variant="inherit">{value}</span>);
+                }
+            }
+        }
+    });
+    console.log(output);
+    if (isRemove) {
+        return output.join('');
+    } else {
         return output;
     }
 }
@@ -43,6 +73,25 @@ export function json_to_b64(str) {
 }
 export function b64_to_json(str) {
     return JSON.parse(decodeURIComponent(escape(window.atob(str))));
+}
+
+export function getElement(type, key) {
+    switch (type) {
+        case 1:
+            return <img key={key} src="/img/icon/none.jpg" style={{ height: "25px", width: "25px" }} alt="無"></img>;
+        case 2:
+            return <img key={key} src="/img/icon/fire.jpg" style={{ height: "25px", width: "25px" }} alt="炎"></img>;
+        case 3:
+            return <img key={key} src="/img/icon/water.jpg" style={{ height: "25px", width: "25px" }} alt="水"></img>;
+        case 4:
+            return <img key={key} src="/img/icon/light.jpg" style={{ height: "25px", width: "25px" }} alt="光"></img>;
+        case 5:
+            return <img key={key} src="/img/icon/dark.jpg" style={{ height: "25px", width: "25px" }} alt="暗"></img>;
+        case 6:
+            return <img key={key} src="/img/icon/wind.jpg" style={{ height: "25px", width: "25px" }} alt="風"></img>;
+        case 7:
+            return <img key={key} src="/img/icon/life.jpg" style={{ height: "25px", width: "25px" }} alt="心"></img>;
+    }
 }
 
 export class UnitIcon extends React.Component {
@@ -55,6 +104,7 @@ export class UnitIcon extends React.Component {
         draw_id: PropTypes.number.isRequired,
         image: PropTypes.string.isRequired,
         size: PropTypes.number,
+        lazy: PropTypes.bool,
     }
 
     static defaultProps = {
@@ -62,11 +112,17 @@ export class UnitIcon extends React.Component {
         draw_id: 0,
         image: '',
         size: 40,
+        lazy: false,
     }
 
     render() {
         return <Tooltip title={this.props.draw_id + " - " + this.props.name}>
-            <Link to={"/unit/" + this.props.draw_id}><img src={this.props.image} alt={this.props.draw_id + " - " + this.props.name} style={{ height: this.props.size + "px", width: this.props.size + "px" }} /></Link>
+            <Link to={"/unit/" + this.props.draw_id}>
+                {this.props.lazy && <LazyLoad height={this.props.size} placeholder={<img src="/img/empty.png" style={{ height: this.props.size + "px", width: this.props.size + "px" }} />}>
+                    <img src={this.props.image} alt={this.props.draw_id + " - " + this.props.name} style={{ height: this.props.size + "px", width: this.props.size + "px" }} />
+                </LazyLoad>}
+                {!this.props.lazy && <img src={this.props.image} alt={this.props.draw_id + " - " + this.props.name} style={{ height: this.props.size + "px", width: this.props.size + "px" }} />}
+            </Link>
         </Tooltip>
     }
 }

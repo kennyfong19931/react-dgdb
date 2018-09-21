@@ -106,12 +106,13 @@ const DrawUnitList = (unitList, filterList) => (
                 return true;
             }
         }).map((unit) => (
-            <UnitIcon key={"unit" + unit.draw_id} name={unit.name} draw_id={unit.draw_id} image={unit.image} size={50} />
+            <UnitIcon key={"unit" + unit.draw_id} name={unit.name} draw_id={unit.draw_id} image={unit.image} size={50} lazy={true} />
         ))}
     </>
 );
 DrawUnitList.propTypes = {
-    list: PropTypes.array,
+    unitList: PropTypes.array,
+    filterList: PropTypes.array,
 }
 
 export class UnitList extends React.Component {
@@ -189,8 +190,6 @@ export class UnitList extends React.Component {
 
                 <meta property="og:title" content="Unit列表" />
                 <meta property="og:description" content="Divine Gate 所有Unit列表" />
-                <meta property="og:site_name" content={Constant.COMMON.SITE_NAME} />
-                <meta property="og:url" content={Constant.COMMON.HOST} />
             </Helmet>
             <Paper style={theme.palette.primary} className="breadcrumb">
                 <Typography style={theme.palette.breadcrumb} component={Link} to="/">主頁</Typography>

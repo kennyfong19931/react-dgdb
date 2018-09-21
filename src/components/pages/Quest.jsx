@@ -342,14 +342,6 @@ export class Quest extends React.Component {
 
     render() {
         return <Grid container spacing={24}>
-            <Helmet>
-                <title>{this.state.jsonObj.quest_name} - {Constant.COMMON.SITE_NAME}</title>
-
-                <meta property="og:title" content={this.state.jsonObj.quest_name} />
-                <meta property="og:description" content={this.state.jsonObj.quest_name + '資料'} />
-                <meta property="og:site_name" content={Constant.COMMON.SITE_NAME} />
-                <meta property="og:url" content={Constant.COMMON.HOST} />
-            </Helmet>
             {(() => {
                 switch (this.state.status) {
                     case Constant.STATUS.LOADING:
@@ -403,6 +395,12 @@ export class Quest extends React.Component {
                     case Constant.STATUS.ERROR: return <Grid item xs><ErrorPage /></Grid>;
                     case Constant.STATUS.SUCCESS:
                         return <Grid item xs>
+                            <Helmet>
+                                <title>{parseColorTag(this.state.jsonObj.quest_name, true)} - {Constant.COMMON.SITE_NAME}</title>
+                
+                                <meta property="og:title" content={parseColorTag(this.state.jsonObj.quest_name, true)} />
+                                <meta property="og:description" content={parseColorTag(this.state.jsonObj.quest_name, true) + '資料'} />
+                            </Helmet>
                             <Paper style={theme.palette.primary} className="breadcrumb">
                                 <Typography style={theme.palette.breadcrumb} component={Link} to="/">主頁</Typography>
                                 <KeyboardArrowRight style={theme.palette.breadcrumb} />
