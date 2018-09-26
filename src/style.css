@@ -77,6 +77,17 @@ a{
 }
 /* End Quest */
 
+/* Unit */
+#chara-bg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#unit-large{
+    max-width: 100vw;
+}
+/* End Unit */
+
 /* Skeleton Screen */
 .skeleton-sm{
     width: 100px;
@@ -121,6 +132,11 @@ a{
         padding: 0 0 5px 0;
     }
     /* End Vote Result */
+    /* Unit */
+    #chara-bg{
+        min-height: 680px;
+    }
+    /* End Unit */
 }
 @media only screen and (min-width: 960px){
     /* Vote Result */
@@ -135,6 +151,11 @@ a{
         break-inside: avoid; /* IE 10+ */
     }
     /* End Vote Result */
+    /* Unit */
+    #chara-bg{
+        min-height: 930px;
+    }
+    /* End Unit */
 }
 @media only screen and (min-width: 1280px){
     .container{

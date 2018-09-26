@@ -5,7 +5,7 @@ import * as Constant from '../Constant';
 import { Link } from 'react-router-dom';
 import theme from '../../theme';
 import { ErrorPage } from './ErrorPage';
-import { parseColorTag, UnitIcon, TrapIcon } from '../Util';
+import { parseColorTag, parseStory, UnitIcon, TrapIcon } from '../Util';
 
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
@@ -456,7 +456,7 @@ export class Quest extends React.Component {
                                         <Typography>{this.state.jsonObj.story}</Typography>
                                         {this.state.jsonObj.storycn && <>
                                             <Divider style={{ margin: "2px" }} />
-                                            <Typography>{this.state.jsonObj.storycn}</Typography>
+                                            <Typography>{parseStory(this.state.jsonObj.storycn)}</Typography>
                                         </>
                                         }
                                     </Paper>

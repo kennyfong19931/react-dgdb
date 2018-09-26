@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
 
 import Tooltip from '@material-ui/core/Tooltip';
+import Typography from '@material-ui/core/Typography';
 
 export function parseColorTag(input, isRemove = false) {
     if (input == undefined || input == '') return '';
-    console.log(input);
     const colorRegex = /\[([A-Fa-f0-9]{6}|w{3})\](.+?)\[\-\]/gm; // eslint-disable-line no-useless-escape
     const colorRegex2 = /(\[(?:[A-Fa-f0-9]{6}|w{3})\](?:.+?)\[\-\])/gm; // eslint-disable-line no-useless-escape
     const colorEndTagRegex = /\[\-\]/g; // eslint-disable-line no-useless-escape
@@ -60,7 +60,6 @@ export function parseColorTag(input, isRemove = false) {
             }
         }
     });
-    console.log(output);
     if (isRemove) {
         return output.join('');
     } else {
@@ -68,8 +67,37 @@ export function parseColorTag(input, isRemove = false) {
     }
 }
 
-export function json_to_b64(str) {
-    return window.btoa(unescape(encodeURIComponent(JSON.stringify(str))));
+export function parseStory(input) {
+    const regex = /\[\[([0-9]+)\|([^\]]+)\]\]/g;
+    const regex2 = /(\[\[[0-9]+\|[^\]]+\]\])/g;
+
+    let m;
+    let output = [];
+
+    // handle img tag
+    let inputArr = [input];
+    if (regex2.exec(input) !== null) {
+        inputArr = input.split(regex2);
+    }
+    console.log(inputArr);
+    inputArr.map((value, index) => {
+        if ((m = regex.exec(value)) !== null) {
+            // This is necessary to avoid infinite loops with zero-width matches
+            if (m.index === regex.lastIndex) {
+                regex.lastIndex++;
+            }
+
+            output.push(<Typography component={Link} key={"parse-story-" + index} to={"/unit/" + m[1]} style={{ color: "#bbb" }}>{m[2]}</Typography>);
+        } else {
+            output.push(<Typography key={"parse-story-" + index}>{value}</Typography>);
+        }
+    });
+    console.log(output);
+    return output;
+}
+
+export function json_to_b64(obj) {
+    return window.btoa(unescape(encodeURIComponent(JSON.stringify(obj))));
 }
 export function b64_to_json(str) {
     return JSON.parse(decodeURIComponent(escape(window.atob(str))));
@@ -91,6 +119,29 @@ export function getElement(type, key) {
             return <img key={key} src="/img/icon/wind.jpg" style={{ height: "25px", width: "25px" }} alt="風"></img>;
         case 7:
             return <img key={key} src="/img/icon/life.jpg" style={{ height: "25px", width: "25px" }} alt="心"></img>;
+    }
+}
+
+export function getKind(type) {
+    switch (type) {
+        case 1:
+            return "人";
+        case 2:
+            return "龍";
+        case 3:
+            return "神";
+        case 4:
+            return "魔物";
+        case 5:
+            return "妖精";
+        case 6:
+            return "獸";
+        case 7:
+            return "機械";
+        case 8:
+            return "強化合成";
+        default:
+            return "無指定";
     }
 }
 
