@@ -1,4 +1,7 @@
 /node_modules
-/dist/img
+/dist/img/area
+/dist/img/icon
+/dist/img/trap
+/dist/img/panel
 npm logs.lnk
 package-lock.json

@@ -1,5 +1,4 @@
 export * from './Home'
-export * from './About'
 export * from './Area'
 export * from './Mark'
 export * from './Quest'

@@ -15,7 +15,7 @@ export class Mark extends React.Component {
     constructor(props) {
         super(props);
         this.urlParams = props.match.params;
-        console.log(this.urlParams.hash);
+        
         this.state = {
             type: props.match.params.type
         };
@@ -31,7 +31,7 @@ export class Mark extends React.Component {
         if (nextProps.match.params.type !== prevState.type) {
             return { type: nextProps.match.params.type }
         }
-        return { type: prevState.type };
+        return null;
     }
     componentDidUpdate(prevProps) {
         if (prevProps.match.params.type !== this.state.type) {
