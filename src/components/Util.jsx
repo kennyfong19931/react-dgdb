@@ -79,7 +79,6 @@ export function parseStory(input) {
     if (regex2.exec(input) !== null) {
         inputArr = input.split(regex2);
     }
-    console.log(inputArr);
     inputArr.map((value, index) => {
         if ((m = regex.exec(value)) !== null) {
             // This is necessary to avoid infinite loops with zero-width matches
@@ -89,10 +88,9 @@ export function parseStory(input) {
 
             output.push(<Typography component={Link} key={"parse-story-" + index} to={"/unit/" + m[1]} style={{ color: "#bbb" }}>{m[2]}</Typography>);
         } else {
-            output.push(<Typography key={"parse-story-" + index}>{value}</Typography>);
+            output.push(<Typography component="span" key={"parse-story-" + index}>{value}</Typography>);
         }
     });
-    console.log(output);
     return output;
 }
 
